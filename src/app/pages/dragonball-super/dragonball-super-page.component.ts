@@ -1,14 +1,11 @@
 import { Component, signal } from "@angular/core";
-
-interface Character {
-  id: number;
-  name: string;
-  power: number;
-}
+import { CharacterLisComponent } from "../../components/dragonball/character-lis/character-lis.component";
+import { Character } from "../../interfaces/character.interface";
+import { CharacterAddComponent } from "../../components/dragonball/character-lis/character-add/character-add.component";
 
 @Component({
   selector: 'app-dragonball-super-page',
-  imports: [],
+  imports: [CharacterLisComponent, CharacterAddComponent],
   templateUrl: './dragonball-super-page.component.html',
   styleUrl: './dragonball-super-page.component.css'
 })
@@ -22,25 +19,7 @@ export class DragonballSuperPageComponent {
     {id: 2, name: 'Vegeta', power: 8000}
   ]);
 
-  addCharacter() {
-    if( !this.name() || !this.power() || this.power() <= 0) {
-      return;
-    }
-
-    const newCharacter: Character = {
-      id: this.characters().length + 1,
-      name: this.name(),
-      power: this.power()
-    };
-
+  addCharacter(newCharacter: Character) {
     this.characters.update((list) => [... list, newCharacter]);
-
-    this.resetFields();
-
-  }
-
-  resetFields() {
-    this.name.set('');
-    this.power.set(0);
   }
 }
