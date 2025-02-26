@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Component, signal } from "@angular/core";
 
 interface Character {
   id: number;
@@ -7,22 +7,19 @@ interface Character {
 }
 
 @Component({
-  selector: 'app-dragonball-page',
+  selector: 'app-dragonball-super-page',
   imports: [],
-  templateUrl: './dragonball-page.component.html',
-  styleUrl: './dragonball-page.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './dragonball-super-page.component.html',
+  styleUrl: './dragonball-super-page.component.css'
 })
-export class DragonballPageComponent {
+export class DragonballSuperPageComponent {
 
-  name = signal('Gohan');
-  power = signal(100);
+  name = signal('');
+  power = signal(0);
 
   characters = signal<Character[]>([
     {id: 1, name: 'Goku', power: 9001},
-    // {id: 2, name: 'Vegeta', power: 8000},
-    // {id: 3, name: 'Piccolo', power: 3000},
-    // {id: 4, name: 'Yamcha', power: 500},
+    {id: 2, name: 'Vegeta', power: 8000}
   ]);
 
   addCharacter() {
